@@ -38,9 +38,10 @@ struct MenuView: View {
                     Text("내 신용점수")
                     Text("보안과 인증")
                 }
-                
+            
                 Section("자산") {
                     Text("보안과 인증")
+                        .asPointBorderText()
                     Text("내 신용점수")
                     Text("보안과 인증")
                 }
@@ -89,6 +90,11 @@ struct PointBoardText: ViewModifier {
             .background(.purple)
             .clipShape(Capsule())
     }
+}
+
+extension View {
     
-    
+    func asPointBorderText() -> some View {
+        modifier(PointBoardText())
+    }
 }
