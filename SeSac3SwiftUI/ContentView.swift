@@ -19,7 +19,7 @@
 // Button<Text>  body의 타입 확인 : ModifiedContent<ModifiedContent<Button<Text>, _EnvironmentKeyWritingModifier<Optional<Color>>>, _BackgroundStyleModifier<Color>>
 
 // Generic: 사용할 때 타입을 구체적으로 지정 즉, 컴파일 시점에서 타입이 지정됨
-// some: 불투명 타입 ( Opaque type 5.1 ) , 역제네릭 타입 즉, 이미 알고 있는 타이블 거꾸로 숨김
+// some: 불투명 타입 ( Opaque type 5.1 ) , 역제네릭 타입 즉, 이미 알고 있는 타입을 거꾸로 숨김
 // modifier => 뷰가 매번 반환된다.
 import SwiftUI
 
