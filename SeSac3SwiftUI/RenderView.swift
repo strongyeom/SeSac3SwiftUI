@@ -19,6 +19,26 @@ struct RenderView: View {
         NavigationView  {
             VStack {
                 
+                HStack {
+                    RoundedRectangle(cornerRadius: 30)
+                        // fill 안에는 Color 뿐만 아니라 Gradient를 넣을 수 있음
+                        .fill(
+                            LinearGradient(gradient: Gradient(colors: [.black, .red, .blue]), startPoint: .bottomLeading, endPoint: .trailing)
+                        
+                        )
+                    RoundedRectangle(cornerRadius: 30)
+                        .fill(
+                            RadialGradient(colors: [.orange, .blue, .green], center: .center, startRadius: 5, endRadius: 60)
+                            
+                        )
+                    RoundedRectangle(cornerRadius: 30)
+                        .fill(
+                            AngularGradient(colors: [.yellow, .brown, .red], center: .center, angle: .degrees(123))
+                        
+                        )
+                }
+                .frame(height: 100)
+                
                 // 다른 화면으로 Push 하고 할때는 NavigationLink 사용
                 NavigationLink {
                         MenuView()
