@@ -14,6 +14,7 @@
 		2657F3A22B01B96400E3A22E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657F3A12B01B96400E3A22E /* MenuView.swift */; };
 		2657F3A42B01C89400E3A22E /* RenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657F3A32B01C89400E3A22E /* RenderView.swift */; };
 		26F4937A2B03071300AA68E7 /* TamagochiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F493792B03071300AA68E7 /* TamagochiView.swift */; };
+		26F4937C2B03379F00AA68E7 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F4937B2B03379F00AA68E7 /* ThumbnailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		2657F3A12B01B96400E3A22E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		2657F3A32B01C89400E3A22E /* RenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderView.swift; sourceTree = "<group>"; };
 		26F493792B03071300AA68E7 /* TamagochiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagochiView.swift; sourceTree = "<group>"; };
+		26F4937B2B03379F00AA68E7 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				2657F3A12B01B96400E3A22E /* MenuView.swift */,
 				2657F3A32B01C89400E3A22E /* RenderView.swift */,
 				26F493792B03071300AA68E7 /* TamagochiView.swift */,
+				26F4937B2B03379F00AA68E7 /* ThumbnailView.swift */,
 				2657F3972B01A85A00E3A22E /* Assets.xcassets */,
 				2657F3992B01A85A00E3A22E /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 				2657F3962B01A85800E3A22E /* ContentView.swift in Sources */,
 				26F4937A2B03071300AA68E7 /* TamagochiView.swift in Sources */,
 				2657F3A22B01B96400E3A22E /* MenuView.swift in Sources */,
+				26F4937C2B03379F00AA68E7 /* ThumbnailView.swift in Sources */,
 				2657F3A42B01C89400E3A22E /* RenderView.swift in Sources */,
 				2657F3942B01A85800E3A22E /* SeSac3SwiftUIApp.swift in Sources */,
 			);
