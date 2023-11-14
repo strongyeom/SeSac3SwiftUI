@@ -27,21 +27,24 @@ struct User {
 
 // ⭐️ UI는 데이터에 의존해서 자신의 상태를 결정하게 된다.
 // @State == SOT (Source of Truth) , 상태 프로퍼티(State Property)
+// @Binding : @State에서 파생된 데이터 
 struct TamagochiView: View {
     
-   @State private var nickname: String = "고래고래" // View에 대한 상태를 관리하기 위해 존재
-    
+   @State private var number: Int = 0 // View에 대한 상태를 관리하기 위해 존재
+    @State private var riceNumber: Int = 0
     // body 연산 프로퍼티 안에 get {} 이 있지만 생략해서 사용하는 것이고, nickname을 바꿀려면 get 앞에 mutating을 작성해야한디.
     // ⭐️ SwiftUI에서는 body에 get만 사용할 수 있고 mutating을 사용할 수 없음 -> 변수를 수정 할 수 없음 -> @State 사용
     var body: some View {
         VStack {
-            Text("Hello, World! \(nickname)") // 데이터가 달라질때 View를 다시 Reendering 함
-                .background(.black)
-                .foregroundColor(.white)
-                .font(.title)
+            ExtractedView(title: "물방울 갯수", count: $number)
             
-            Button("버튼 확인") {
-                nickname = "새싹이"
+            Button("물방울 증가") {
+                number += 1
+            }
+            
+            ExtractedView(title: "밥알 갯수", count: $riceNumber)
+            Button("밥알 증가") {
+                riceNumber += 1
             }
         }
       
@@ -51,5 +54,19 @@ struct TamagochiView: View {
 struct TamagochiView_Previews: PreviewProvider {
     static var previews: some View {
         TamagochiView()
+    }
+}
+
+struct ExtractedView: View {
+    // 하위 뷰에서 변수가 바뀌는 경우에도 상위 뷰의 데이터에 영향을 주기 위해서 Binding 사용 즉, 동기화
+    
+    let title: String
+    @Binding var count: Int
+    
+    var body: some View {
+        Text("\(title) \(count)") // 데이터가 달라질때 View를 다시 Reendering 함
+            .background(.black)
+            .foregroundColor(.white)
+            .font(.title)
     }
 }
