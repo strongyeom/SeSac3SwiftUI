@@ -27,7 +27,7 @@ struct User {
 
 // ⭐️ UI는 데이터에 의존해서 자신의 상태를 결정하게 된다.
 // @State == SOT (Source of Truth) , 상태 프로퍼티(State Property)
-// @Binding : @State에서 파생된 데이터 
+// @Binding : @State에서 파생된 데이터
 struct TamagochiView: View {
     
    @State private var number: Int = 0 // View에 대한 상태를 관리하기 위해 존재
@@ -41,11 +41,27 @@ struct TamagochiView: View {
             Button("물방울 증가") {
                 number += 1
             }
-            
+            .font(.title)
+            .padding(50)
+            .background(.green)
             ExtractedView(title: "밥알 갯수", count: $riceNumber)
-            Button("밥알 증가") {
+            
+            // titleKey와의 차이점 : 1. Label에 다양한 modifier 설정이 가능함 / 2. 버튼의 padding이 적용되었을때 버튼 클릭 범위 다름
+            Button {
                 riceNumber += 1
+            } label: {
+                HStack {
+                    Image(systemName: "flame")
+                    Text("밥알 갯수")
+                        .font(.title)
+                        .padding(50)
+                       
+                }
+                .background(.green)
+                    
             }
+            
+
         }
       
     }
