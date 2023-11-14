@@ -11,7 +11,7 @@ struct ThumbnailView: View {
     @State private var isShow: Bool = false
     var body: some View {
         ZStack {
-           
+            
             Image("image")
                 .resizable() // 사이즈 조절할 수 있게 설정 도와줌
                 .ignoresSafeArea()
@@ -23,12 +23,14 @@ struct ThumbnailView: View {
             Text("크크크 치킨")
             
             VStack {
+                
                 Button("SHOW") {
-                   //Bool 값에 따라 화면 전환하기
+                    //Bool 값에 따라 화면 전환하기
                     isShow = true
                 }
                 .padding()
                 .background(.white)
+                
                 Spacer()
             }
             .border(.red)
@@ -36,7 +38,7 @@ struct ThumbnailView: View {
             VStack {
                 Spacer()
                 HStack {
-                        Circle()
+                    Circle()
                         .stroke(.red, lineWidth: 2)
                         .overlay {
                             Image("image")
@@ -44,23 +46,23 @@ struct ThumbnailView: View {
                                 .scaledToFill()
                                 .clipShape(Circle())
                         }
-                        
-                      
-                        
-                        Circle()
-                        Circle()
-//                        Image("image")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .border(.blue, width: 2)
-//                        Image("image")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .border(.blue, width: 2)
-//                        Image("image")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .border(.blue, width: 2)
+                    
+                    
+                    
+                    Circle()
+                    Circle()
+                    //                        Image("image")
+                    //                            .resizable()
+                    //                            .scaledToFit()
+                    //                            .border(.blue, width: 2)
+                    //                        Image("image")
+                    //                            .resizable()
+                    //                            .scaledToFit()
+                    //                            .border(.blue, width: 2)
+                    //                        Image("image")
+                    //                            .resizable()
+                    //                            .scaledToFit()
+                    //                            .border(.blue, width: 2)
                 }
             }
             .border(.green)
@@ -69,7 +71,7 @@ struct ThumbnailView: View {
         .sheet(isPresented: $isShow) {
             TamagochiView()
         }
-//        .fullScreenCover(isPresented: <#T##Binding<Bool>#>, content: <#T##() -> View#>)
+        //        .fullScreenCover(isPresented: <#T##Binding<Bool>#>, content: <#T##() -> View#>)
         
         
     }
