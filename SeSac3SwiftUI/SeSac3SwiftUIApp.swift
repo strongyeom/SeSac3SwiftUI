@@ -11,7 +11,7 @@ import SwiftUI
 struct SeSac3SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PosterView()
         }
     }
 }

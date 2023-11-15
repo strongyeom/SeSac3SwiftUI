@@ -23,14 +23,27 @@ import SwiftUI
 
 
 struct PosterView: View {
+    
+    @State private var isPresent: Bool = false
+    
     var body: some View {
 
         ScrollView(showsIndicators: false) {
             LazyVStack {
                 ForEach(0..<50) { item in
-                    Text("\(item)")
-                        .lineLimit(2) //  == numberOfLines
+                    AsyncImageView()
+                        // 크기를 지정할때 vs 크기를 지정하지 않았을때 차이점
+                        .frame(width: 100, height: 100)
+                        .border(.red, width: 2)
+                        .onTapGesture {
+                            print("\(item)인덱스 Tap")
+                            isPresent.toggle()
+                        }
                 }
+            }
+            // LazyVStack 위에 띄어야하기 때문에 위치 중요 
+            .sheet(isPresented: $isPresent) {
+                RenderView()
             }
 //            .frame(maxWidth: .infinity)
         }
@@ -46,20 +59,20 @@ struct AsyncImageView : View {
     var body: some View {
         // 이미지가 안올때 처리
         VStack {
-            AsyncImage(url: url) { image in
-                // 성공 했을때
-                image
-                    .resizable()
-                    .frame(width: 150, height: 100)
-                    .scaledToFit()
-    //                .cornerRadius(10)
-                // 이렇게 써야됌 cornerRadius deprecated 될 예정
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-            } placeholder: {
-                // 에러 발생했을때 나타날 기본 이미지 설정
-    //            Image(systemName: "flame")
-                ProgressView()
-        }
+//            AsyncImage(url: url) { image in
+//                // 성공 했을때
+//                image
+//                    .resizable()
+//                    .frame(width: 100, height: 100)
+//                    .scaledToFit()
+//    //                .cornerRadius(10)
+//                // 이렇게 써야됌 cornerRadius deprecated 될 예정
+//                    .clipShape(RoundedRectangle(cornerRadius: 20))
+//            } placeholder: {
+//                // 에러 발생했을때 나타날 기본 이미지 설정
+//    //            Image(systemName: "flame")
+//                ProgressView()
+//        }
             
             
             // 🔴 서버에 응답이 없거나 URL이 잘못 된 경우???
@@ -73,7 +86,7 @@ struct AsyncImageView : View {
                 case .success(let image):
                     image
                         .resizable()
-                        .frame(width: 150, height: 100)
+                        .frame(width: 100, height: 100)
                         .scaledToFit()
                         .clipShape(RoundedRectangle(cornerRadius: 20))
                 case .failure(_): // error를 사용하지 않기 때문에 생략 가능
@@ -92,6 +105,6 @@ struct AsyncImageView : View {
 
 struct PosterView_Previews: PreviewProvider {
     static var previews: some View {
-        AsyncImageView()
+        PosterView()
     }
 }
