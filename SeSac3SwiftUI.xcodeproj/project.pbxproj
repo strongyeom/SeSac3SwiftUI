@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2649E1A52B044C37003CA70C /* TransitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2649E1A42B044C37003CA70C /* TransitionView.swift */; };
+		2649E1A72B044FEB003CA70C /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2649E1A62B044FEB003CA70C /* CategoryView.swift */; };
 		2657F3942B01A85800E3A22E /* SeSac3SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657F3932B01A85800E3A22E /* SeSac3SwiftUIApp.swift */; };
 		2657F3962B01A85800E3A22E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2657F3952B01A85800E3A22E /* ContentView.swift */; };
 		2657F3982B01A85A00E3A22E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2657F3972B01A85A00E3A22E /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2649E1A42B044C37003CA70C /* TransitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionView.swift; sourceTree = "<group>"; };
+		2649E1A62B044FEB003CA70C /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 		2657F3902B01A85800E3A22E /* SeSac3SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SeSac3SwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2657F3932B01A85800E3A22E /* SeSac3SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeSac3SwiftUIApp.swift; sourceTree = "<group>"; };
 		2657F3952B01A85800E3A22E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -65,6 +69,8 @@
 				2657F3A32B01C89400E3A22E /* RenderView.swift */,
 				26F493792B03071300AA68E7 /* TamagochiView.swift */,
 				26F4937B2B03379F00AA68E7 /* ThumbnailView.swift */,
+				2649E1A42B044C37003CA70C /* TransitionView.swift */,
+				2649E1A62B044FEB003CA70C /* CategoryView.swift */,
 				2657F3972B01A85A00E3A22E /* Assets.xcassets */,
 				2657F3992B01A85A00E3A22E /* Preview Content */,
 			);
@@ -152,8 +158,10 @@
 				2657F3962B01A85800E3A22E /* ContentView.swift in Sources */,
 				26F4937A2B03071300AA68E7 /* TamagochiView.swift in Sources */,
 				2657F3A22B01B96400E3A22E /* MenuView.swift in Sources */,
+				2649E1A52B044C37003CA70C /* TransitionView.swift in Sources */,
 				26F4937C2B03379F00AA68E7 /* ThumbnailView.swift in Sources */,
 				2657F3A42B01C89400E3A22E /* RenderView.swift in Sources */,
+				2649E1A72B044FEB003CA70C /* CategoryView.swift in Sources */,
 				2657F3942B01A85800E3A22E /* SeSac3SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

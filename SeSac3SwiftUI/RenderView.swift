@@ -40,12 +40,12 @@ struct RenderView: View {
                 .frame(height: 100)
                 
                 // 다른 화면으로 Push 하고 할때는 NavigationLink 사용
-                NavigationLink {
+                NavigationLink() {
                         MenuView()
                     } label: {
                         Text("Push")
                     }
-
+                
                 
                 Toggle("토글입니다", isOn: $isEnabled)
                 
