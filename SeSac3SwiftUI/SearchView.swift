@@ -7,12 +7,37 @@
 
 import SwiftUI
 
+struct Movie: Hashable {
+    let id = UUID() // 모델에 Hashable한 게 있으면 생략가능하지만 없을때 UUID() 생성
+    let name: String
+    let color = Color.random()
+}
+
 struct SearchView: View {
     @State private var searchQuery = ""
+    let movie: [Movie] = [
+        Movie(name: "AVC"),
+        Movie(name: "asa"),
+        Movie(name: "SRO"),
+        Movie(name: "DNCI"),
+        Movie(name: "DJEI"),
+        Movie(name: "FJEI"),
+        ]
+    
     var body: some View {
         NavigationView {
-            Text("ㅇㄴㅇㄴㅇㄴ")
-                .navigationTitle("검색")
+            List {
+                ForEach(movie, id: \.id) { item in
+                    HStack {
+                        Circle().fill(item.color)
+                        Text("안녕하세요 \(item.name)")
+                        
+                    }
+                    .frame(height: 60)
+                }
+            }
+            .listStyle(.plain)
+            .navigationTitle("검색")
         }
         // 검색하는 modifier text: 바인딩String, placement: 검색컨트롤로 위치, prompt: 플레이스홀더
         .searchable(text: $searchQuery, placement: .navigationBarDrawer, prompt: "검색해보세요")
@@ -76,6 +101,12 @@ struct FourView: View {
     var body: some View {
         Text("Hello, World!4")
             .background(Color.random())
+    }
+}
+
+struct SearchDetailView: View {
+    var body: some View {
+        Text("SearchDetailView")
     }
 }
 
