@@ -8,15 +8,18 @@
 import SwiftUI
 
 struct SearchView: View {
-    
+    @State private var searchQuery = ""
     var body: some View {
         NavigationView {
             Text("ㅇㄴㅇㄴㅇㄴ")
                 .navigationTitle("검색")
         }
-        // 검색하는 modifier text: , placement: , prompt:
-        .searchable(text: <#T##Binding<String>#>, placement: <#T##SearchFieldPlacement#>, prompt: <#T##Text?#>)
-        
+        // 검색하는 modifier text: 바인딩String, placement: 검색컨트롤로 위치, prompt: 플레이스홀더
+        .searchable(text: $searchQuery, placement: .navigationBarDrawer, prompt: "검색해보세요")
+        // 검색을 하는 시점 onSubmit
+        .onSubmit(of: .search) {
+            print("\(searchQuery)")
+        }
     }
 }
 
