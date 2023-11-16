@@ -34,7 +34,8 @@ struct SearchView: View {
    //@State var aa: [Movie] = []
     
     var body: some View {
-        NavigationStack { // NavigationLink(Value: , label: )을 사용해야함
+        NavigationStack { // NavigationLink(Value: , label: )을 사용해야함 => 왜쓰나요>??
+            // 이유 : init을 타지 않게 하기 해서 NavationLazyView를 사용했는데 16.0 이상부터 NavigationStack을 사용하면 손쉽게 해결 init()을 안타게 할 수 있음
             List {
                 ForEach(filteredMovieData, id: \.self) { item in
                     // 네비게이션 뷰 일때 사용
