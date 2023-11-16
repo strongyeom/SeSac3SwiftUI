@@ -10,10 +10,20 @@ import SwiftUI
 // View가 어떻게 그려지고 생성이 되는지
 struct RenderView: View {
     
+    
+    
     // @State : 값이 변경될때마다 RenderView안에 있는 View를 다시 그림
     @State var age = 10
     @State var text: String = ""
     @State var isEnabled: Bool = false
+    
+    init() {
+        self.age = age
+        self.text = text
+        self.isEnabled = isEnabled
+        print("RenderView - init")
+    }
+    
     var body: some View {
         //  NavigationView : UIKit NavigationController 느낌
         NavigationView  {
