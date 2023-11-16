@@ -15,6 +15,8 @@ struct Movie: Hashable {
 
 struct SearchView: View {
     @State private var searchQuery = ""
+    
+    // 전체데이터
     let movie: [Movie] = [
         Movie(name: "AVdsdC"),
         Movie(name: "asads"),
@@ -24,10 +26,17 @@ struct SearchView: View {
         Movie(name: "FJESDSDI"),
         ]
     
+    // 필터 데이터 생성
+    var filteredMovieData: [Movie] {
+        return searchQuery.isEmpty ? movie : movie.filter { $0.name.contains(searchQuery)}
+    }
+    
+   //@State var aa: [Movie] = []
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(movie, id: \.id) { item in
+                ForEach(filteredMovieData, id: \.self) { item in
                     NavigationLink(destination: {
                         SearchDetailView(data: item)
                     }, label: {
@@ -45,9 +54,11 @@ struct SearchView: View {
         }
         // 검색하는 modifier text: 바인딩String, placement: 검색컨트롤로 위치, prompt: 플레이스홀더
         .searchable(text: $searchQuery, placement: .navigationBarDrawer, prompt: "검색해보세요")
-        // 검색을 하는 시점 onSubmit
+        // 검색을 하는 시점(enter를 눌렀을때) onSubmit
         .onSubmit(of: .search) {
             print("\(searchQuery)")
+//
+//            aa = movie.filter { $0.name.contains(searchQuery)}
         }
     }
 }
@@ -109,7 +120,7 @@ struct FourView: View {
 }
 
 struct SearchDetailView: View {
-    
+    // 현재는 단방향이기 때문에 Binding까지는 필요없음
     let data : Movie
     var body: some View {
         Text("\(data.name)")
