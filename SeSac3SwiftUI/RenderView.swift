@@ -9,8 +9,13 @@ import SwiftUI
 
 // View가 어떻게 그려지고 생성이 되는지
 struct RenderView: View {
-    
-    
+     // Environment : 시스템에서 정의된 값을 감지하고 View를 업데이트 할 수 있음
+    // 하나의 앱내에서 어떤뷰를 갖더라도 공통적으로 가지고 있는 설정을 바꿀 수있음
+//    @Environment(\.presentationMode) var presentationMode
+    // iOS 15.0 이상 현재 띄어진 뷰를 사라지게 한다(present가 됐든 push가 됐든 상관없이)라는 명시적으로 설명되어 있음
+    @Environment(\.dismiss) var dismiss
+    // colorScheme : 라이트 모드 or 다크모드인지
+    @Environment(\.colorScheme) var colorScheme
     
     // @State : 값이 변경될때마다 RenderView안에 있는 View를 다시 그림
     @State var age = 10
@@ -74,9 +79,13 @@ struct RenderView: View {
                     Text("Hue: \(age) \(Int.random(in: 1...100))")
                         .foregroundColor(.blue)
                 }
-                Button("클릭") {
-                    age = Int.random(in: 1...100)
+                Button(colorScheme == .dark ? "다크모드 클릭" : "라이트모드 클릭") {
+                    // vs dismiss
+                      dismiss()
+//                    presentationMode.wrappedValue.dismiss()
                 }
+                .background(colorScheme == .dark ? .black : .gray)
+                .foregroundColor(colorScheme == .dark ? .white : .yellow)
             }
             .padding()
             // ⭐️ NavigationView 안쪽에 title을 작성
