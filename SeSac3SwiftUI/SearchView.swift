@@ -34,23 +34,39 @@ struct SearchView: View {
    //@State var aa: [Movie] = []
     
     var body: some View {
-        NavigationView {
+        NavigationStack { // NavigationLink(Value: , label: )을 사용해야함
             List {
                 ForEach(filteredMovieData, id: \.self) { item in
-                    NavigationLink(destination: {
-                        SearchDetailView(data: item)
-                    }, label: {
+                    // 네비게이션 뷰 일때 사용
+//                    NavigationLink(destination: {
+//                        SearchDetailView(data: item)
+//                    }, label: {
+//                        HStack {
+//                            Circle().fill(item.color)
+//                            Text("안녕하세요 \(item.name)")
+//
+//                        }
+//                        .frame(height: 60)
+//                    })
+                    
+                    // NavigationStack을 사용할때 value: 을 사용한다. 데이터기반 Hashable
+                    NavigationLink(value: item) {
                         HStack {
                             Circle().fill(item.color)
                             Text("안녕하세요 \(item.name)")
-                            
                         }
                         .frame(height: 60)
-                    })
+                    }
                 }
             }
             .listStyle(.plain)
             .navigationTitle("검색")
+            // 전환하려고하는 View
+            // for: Hashable 모델의 그 자체
+            // 클로저 구문안에 Hashable 한것 즉, 해당 모델
+            .navigationDestination(for: Movie.self) { item in
+                SearchDetailView(data: item)
+            }
         }
         // 검색하는 modifier text: 바인딩String, placement: 검색컨트롤로 위치, prompt: 플레이스홀더
         .searchable(text: $searchQuery, placement: .navigationBarDrawer, prompt: "검색해보세요")
