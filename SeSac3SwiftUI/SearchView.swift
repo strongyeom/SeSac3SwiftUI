@@ -16,24 +16,28 @@ struct Movie: Hashable {
 struct SearchView: View {
     @State private var searchQuery = ""
     let movie: [Movie] = [
-        Movie(name: "AVC"),
-        Movie(name: "asa"),
-        Movie(name: "SRO"),
-        Movie(name: "DNCI"),
-        Movie(name: "DJEI"),
-        Movie(name: "FJEI"),
+        Movie(name: "AVdsdC"),
+        Movie(name: "asads"),
+        Movie(name: "SRO@@SD"),
+        Movie(name: "DNC@DWI"),
+        Movie(name: "DJE@!!I"),
+        Movie(name: "FJESDSDI"),
         ]
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(movie, id: \.id) { item in
-                    HStack {
-                        Circle().fill(item.color)
-                        Text("안녕하세요 \(item.name)")
-                        
-                    }
-                    .frame(height: 60)
+                    NavigationLink(destination: {
+                        SearchDetailView(data: item)
+                    }, label: {
+                        HStack {
+                            Circle().fill(item.color)
+                            Text("안녕하세요 \(item.name)")
+                            
+                        }
+                        .frame(height: 60)
+                    })
                 }
             }
             .listStyle(.plain)
@@ -105,8 +109,12 @@ struct FourView: View {
 }
 
 struct SearchDetailView: View {
+    
+    let data : Movie
     var body: some View {
-        Text("SearchDetailView")
+        Text("\(data.name)")
+            .font(.title)
+            .bold()
     }
 }
 
