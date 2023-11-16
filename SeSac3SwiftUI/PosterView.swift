@@ -9,7 +9,7 @@ import SwiftUI
 
 /*
  - ScrollView
- - LazyVStack : infinity로 설정하지 않아서 전체 Scene을 차지함 스크롤 뷰를 쓸때 자주 같이 사용됨
+ - LazyVStack : infinity로 설정하지 않아도 전체 Scene을 차지함 스크롤 뷰를 쓸때 자주 같이 사용됨
  👉 차이점: 테이블 뷰나 콜렉션 뷰 처럼 재사용 매커니즘처럼 Scene에서 보여지는 부분만 보여줌
  Scene에 보여지는 데이터가 많지 않으면 VStack을 써도 괜찮음
    ex) 네트워크 통신으로 가져와야 하는 상황일때 VStack인 경우 : 모든 데이터를 불러옴
@@ -33,7 +33,10 @@ struct PosterView: View {
                 ForEach(0..<50) { item in
                     AsyncImageView()
                         // 크기를 지정할때 vs 크기를 지정하지 않았을때 차이점
-                        .frame(width: 100, height: 100)
+                        // size가 너무 작거나 지정되지 않았으면 네트워크 통신을 한번에 많이받아야 되서 indicator 나 기본 이미지 뜸
+                        .frame(width: 100, height: 100) // 사이즈를 지정해줘서 호출되는 갯수를 줄여 View에 뜨는 이미지 갯수를 줄여주고 과호출 되는 것을 방지 할 수 있음 
+                    
+                        // frame이 없을때 작은 사이즈의 이미지 네트워크가 과호출 되면서 기본 이미지 나옴
                         .border(.red, width: 2)
                         .onTapGesture {
                             print("\(item)인덱스 Tap")
@@ -57,7 +60,7 @@ struct AsyncImageView : View {
     let url = URL(string: "https://picsum.photos/200")
     
     var body: some View {
-        // 이미지가 안올때 처리
+        
         VStack {
 //            AsyncImage(url: url) { image in
 //                // 성공 했을때
