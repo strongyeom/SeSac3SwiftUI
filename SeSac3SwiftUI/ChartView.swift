@@ -15,7 +15,7 @@ struct ChartView: View {
     @Environment(\.colorScheme) var color
     
     //  @ViewBuilder : 구조체로 따로 빼지 않고 한개의 구조체에서 프로퍼티를 만들어 UI에 표현할까 사용
-    // 즉, body를 제외한 모든 프로퍼티가 UI에 적용되려면 사용해야함 => 어느정도 생략해도 괜찮지만 if 문으로 분기처리 되었을때는 사용해야한다.
+    // 즉, body를 제외한 모든 프로퍼티가 UI에 적용되려면 사용해야함 => 어느정도 생략해도 괜찮지만 if 문으로 분기처리 되었을때는 사용해야한다. => 왠만해서는 쓰는게 좋다.
     @ViewBuilder
     var chartTitle: some View {
         if color == .dark {
@@ -43,6 +43,11 @@ struct ChartView: View {
                     // x: y축에 보여줄 요소들
                     y: .value("관람횟수", item.count))
                 .foregroundStyle(Color.random())
+            }
+            
+            Chart(movie, id: \.self) { item in
+                BarMark(x: .value("가로", item.name),
+                        y: .value("세로", item.count))
             }
         }
         .frame(height: 200)

@@ -40,10 +40,13 @@ struct GridView: View {
         ScrollView {
             LazyVGrid(columns: layout) {
                 ForEach(dummy, id: \.self) { item in
-                    ZStack {
+                    ZStack(alignment: .center) {
                         Color.random()
                         Text(item)
                     }
+//                    Text(item) => LazyVGrid spacing 설정해주면 가능 
+//                        .background(Color.random())
+
                 }
             }
             .padding()
