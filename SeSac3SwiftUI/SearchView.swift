@@ -11,6 +11,7 @@ struct Movie: Hashable {
     let id = UUID() // 모델에 Hashable한 게 있으면 생략가능하지만 없을때 UUID() 생성
     let name: String
     let color = Color.random()
+    let count = Int.random(in: 1...100)
 }
 
 struct SearchView: View {
@@ -31,7 +32,7 @@ struct SearchView: View {
         return searchQuery.isEmpty ? movie : movie.filter { $0.name.contains(searchQuery)}
     }
     
-   //@State var aa: [Movie] = []
+   @State private var showChart = false
     
     var body: some View {
         NavigationStack { // NavigationLink(Value: , label: )을 사용해야함 => 왜쓰나요>??
@@ -59,7 +60,7 @@ struct SearchView: View {
                         .frame(height: 60)
                     }
                 }
-            }
+            } /// List
             .listStyle(.plain)
             .navigationTitle("검색")
             .navigationBarTitleDisplayMode(.large)
@@ -70,7 +71,7 @@ struct SearchView: View {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     // Button으로 UIBarButton과 Button을 같이 쓸 수 있음
                     Button {
-                        print("클릭되었습니다.")
+                        showChart.toggle()
                     } label: {
                         Image(systemName: "star.fill")
                     }
@@ -84,7 +85,7 @@ struct SearchView: View {
                     }
                 }
 
-            })
+            }) /// Toolbar
             // 전환하려고하는 View
             // for: Hashable 모델의 그 자체
             // 클로저 구문안에 Hashable 한것 즉, 해당 모델
@@ -97,8 +98,12 @@ struct SearchView: View {
             .onSubmit(of: .search) {
                 print("\(searchQuery)")
         }
+            .sheet(isPresented: $showChart) {
+                ChartView(movie: movie)
+            }
         }
-    }
+        
+    } /// NavigationStack
 }
 
 //struct SearchView: View {
