@@ -62,20 +62,41 @@ struct SearchView: View {
             }
             .listStyle(.plain)
             .navigationTitle("검색")
+            .navigationBarTitleDisplayMode(.large)
+            // toolbar : 네이게이션 컨트롤러에 사용되고, 하단에 UIToolBar의 영역으로도 사용 할 수 있음
+            .toolbar(content: {
+                
+                // ToolbarItemGroup : Toolbar에서 요소의 위치를 선정해 줄 수 있음
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    // Button으로 UIBarButton과 Button을 같이 쓸 수 있음
+                    Button {
+                        print("클릭되었습니다.")
+                    } label: {
+                        Image(systemName: "star.fill")
+                    }
+                }
+                
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        print("클릭되었습니다.")
+                    } label: {
+                        Image(systemName: "star")
+                    }
+                }
+
+            })
             // 전환하려고하는 View
             // for: Hashable 모델의 그 자체
             // 클로저 구문안에 Hashable 한것 즉, 해당 모델
             .navigationDestination(for: Movie.self) { item in
                 SearchDetailView(data: item)
             }
+            // 검색하는 modifier text: 바인딩String, placement: 검색컨트롤로 위치, prompt: 플레이스홀더
+            .searchable(text: $searchQuery, placement: .navigationBarDrawer, prompt: "검색해보세요")
+            // 검색을 하는 시점(enter를 눌렀을때) onSubmit
+            .onSubmit(of: .search) {
+                print("\(searchQuery)")
         }
-        // 검색하는 modifier text: 바인딩String, placement: 검색컨트롤로 위치, prompt: 플레이스홀더
-        .searchable(text: $searchQuery, placement: .navigationBarDrawer, prompt: "검색해보세요")
-        // 검색을 하는 시점(enter를 눌렀을때) onSubmit
-        .onSubmit(of: .search) {
-            print("\(searchQuery)")
-//
-//            aa = movie.filter { $0.name.contains(searchQuery)}
         }
     }
 }
